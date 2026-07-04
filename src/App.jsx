@@ -9,6 +9,7 @@ import {
   Trophy
 } from 'lucide-react';
 import './App.css';
+import { MANTRA_CONFIG } from './mantra';
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -230,7 +231,7 @@ function App() {
         return (
           <LessonTemplate 
             lesson={activeLesson} 
-            onBack={() => navigate('/')}
+            onBack={() => { window.location.href = MANTRA_CONFIG.dashboardUrl; }}
           />
         );
       }

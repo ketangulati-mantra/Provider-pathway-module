@@ -4,9 +4,7 @@
  */
 export const MANTRA_CONFIG = {
   // Base dashboard URL for Mantra Care
-  ///dashboardUrl: 'https://provider.mantracare.org/dashboard',     // this is to be changed
-
-  dashboardUrl: 'https://provider.mantracare.com/pathway',     // Change at the time of production
+  dashboardUrl: 'https://provider.mantracare.com/pathway',
 
   // Backend API Base URL (empty for local relative paths)
   backendBaseUrl: '',

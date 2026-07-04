@@ -8,8 +8,7 @@ export const goBack = (onBackCallback?: () => void) => {
   if (onBackCallback) {
     onBackCallback();
   } else {
-    window.history.pushState(null, '', '/');
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    window.location.href = MANTRA_CONFIG.dashboardUrl;
   }
 };
 

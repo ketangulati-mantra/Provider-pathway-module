@@ -785,7 +785,7 @@ export const CompletionScreen = ({
           onClick={onClose}
           style={{ width: '100%', marginTop: '8px' }}
         >
-          Return to Portal
+          Take to portal
         </Button>
       </div>
     </div>,
