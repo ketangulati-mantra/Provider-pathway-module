@@ -99,7 +99,11 @@ export function useLessonCompletion(lessonId, onBack, features = {}) {
   const handleQuizComplete = () => {
     if (completedSteps.celebrationShown) {
       showToast("You've already completed this activity.", "success", 3000);
-      if (onBack) goToDashboard();
+      if (onBack) {
+        setTimeout(() => {
+          goToDashboard();
+        }, 1800);
+      }
       return;
     }
     setCompletedSteps((prev) => ({ ...prev, quizDone: true }));

@@ -52,7 +52,9 @@ export default function CorporateEapLessonPage({ onBack }) {
       const saved = localStorage.getItem(`lesson_progress_${LESSON_ID}`);
       if (saved && JSON.parse(saved).celebrationShown) {
         showToast("You've already completed this activity.", "success", 3000);
-        goToDashboard();
+        setTimeout(() => {
+          goToDashboard();
+        }, 1800);
         return;
       }
     } catch(e) {}
