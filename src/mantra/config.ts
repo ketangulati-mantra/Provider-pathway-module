@@ -4,7 +4,7 @@
 export const MANTRA_CONFIG = {
   dashboardUrl: 'https://provider.mantracare.com/pathway',
 
-  webhookUrl: 'https://api.mantracare.org/webhook/pathway',
+  webhookUrl: 'https://api.mantracare.com/webhook/pathway',
 
   /**
    * Default webhook intent.
