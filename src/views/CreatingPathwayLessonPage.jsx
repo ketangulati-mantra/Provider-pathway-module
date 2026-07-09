@@ -53,20 +53,13 @@ export default function CreatingPathwayLessonPage({ onBack }) {
     lessonProgress, 
     showCelebrate, 
     handleCloseCelebration, 
-    handleActionComplete 
+    handleActionComplete,
+    actionDone
   } = useLessonCompletion(LESSON_ID, onBack, {
     hasVideo: false,
     hasQuiz: false,
     hasAction: true
   });
-
-  useEffect(() => {
-    const pct = completedSteps.lessonRead ? 100 : 0;
-    if (pct === 100) {
-      const t = setTimeout(() => setShowCelebrate(true), 800);
-      return () => clearTimeout(t);
-    }
-  }, [completedSteps]);
 
   return (
     <div
@@ -257,7 +250,7 @@ export default function CreatingPathwayLessonPage({ onBack }) {
             className="academy-btn-full"
             variant="primary"
             onClick={handleActionComplete}
-            disabled={completedSteps.lessonRead}
+            disabled={actionDone}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -270,7 +263,7 @@ export default function CreatingPathwayLessonPage({ onBack }) {
             }}
           >
             <CheckCircle2 size={13} />
-            <span>{completedSteps.lessonRead ? 'Complete' : 'Mark Lesson as Complete'}</span>
+            <span>{actionDone ? 'Complete' : 'Mark Lesson as Complete'}</span>
           </Button>
         </div>
 

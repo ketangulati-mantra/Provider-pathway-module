@@ -10,7 +10,7 @@ export const MANTRA_CONFIG = {
   backendBaseUrl: '',
 
   // Endpoint to send webhook notifications when a lesson is marked done
-  webhookUrl: '/api/academy/complete',
+  webhookUrl: 'https://api.mantracare.org/webhook/assessment',
 
   // Flag to control redirection back to Laravel vs returning to local homepage
   redirectAfterCompletion: false,

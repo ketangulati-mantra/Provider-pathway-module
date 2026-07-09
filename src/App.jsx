@@ -31,6 +31,8 @@ import ReferProviderLessonPage from './views/ReferProviderLessonPage';
 import SalesPartnerLessonPage from './views/SalesPartnerLessonPage';
 import CertificateDownloadPage from './views/CertificateDownloadPage';
 import TherapyProviderCertificatePage from './views/TherapyProviderCertificatePage';
+import TopListenerLessonPage from './views/TopListenerLessonPage';
+import ListenerCertificatePage from './views/ListenerCertificatePage';
 import {
   BookOpen,
   Award,
@@ -70,7 +72,8 @@ function App() {
       path: activity.route,
       duration: activity.estimatedDuration,
       points: activity.rewardPoints,
-      category: activity.route.includes('intern') || activity.route.includes('support') || activity.route.includes('corporate') || activity.route.includes('campus') ? 'Initiative' : 'Lesson'
+      category: activity.route.includes('intern') || activity.route.includes('support') || activity.route.includes('corporate') || activity.route.includes('campus') ? 'Initiative' : 'Lesson',
+      service: activity.service || 'Therapist'
     }));
 
   // Render view based on route path
@@ -325,6 +328,22 @@ function App() {
     if (currentPath === '/task/provider-certificate') {
       return (
         <TherapyProviderCertificatePage
+          onBack={() => navigate('/dev')}
+        />
+      );
+    }
+
+    if (currentPath === '/task/top-listener-recognition') {
+      return (
+        <TopListenerLessonPage
+          onBack={() => navigate('/dev')}
+        />
+      );
+    }
+
+    if (currentPath === '/task/listener-certificate') {
+      return (
+        <ListenerCertificatePage
           onBack={() => navigate('/dev')}
         />
       );

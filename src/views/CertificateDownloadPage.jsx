@@ -289,7 +289,10 @@ const DEFAULT_CONFIG = {
   quote: '"Therapy is a sacred collaboration of self-discovery and healing. Your presence, guidance, and compassion support others in navigating life\'s challenges and finding their strength."',
   authorizedBy: 'MantraCare Therapy Intern Program',
   footer: 'Guiding minds and healing hearts. | mantracare.org',
-  certificateIdPrefix: 'MC-TIPP'
+  certificateIdPrefix: 'MC-TIPP',
+  congratsHeading: 'Congratulations!',
+  congratsBadge: null,
+  congratsDescription: null
 };
 
 export default function CertificateDownloadPage({ onBack, certificateConfig }) {
@@ -386,11 +389,24 @@ export default function CertificateDownloadPage({ onBack, certificateConfig }) {
                 <CheckCircle2 size={32} />
               </div>
               
+              {config.congratsBadge && (
+                <div style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '6px',
+                  background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                  color: '#fff', borderRadius: '20px',
+                  padding: '5px 14px', fontSize: '0.75rem', fontWeight: 700,
+                  letterSpacing: '0.05em', textTransform: 'uppercase',
+                  marginBottom: '20px'
+                }}>
+                  {config.congratsBadge}
+                </div>
+              )}
+
               <h1 style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.5rem', color: 'var(--text-main)', margin: '0 0 12px' }}>
-                Congratulations!
+                {config.congratsHeading || 'Congratulations!'}
               </h1>
               <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', margin: '0 0 32px', lineHeight: '1.5' }}>
-                You've completed the {config.courseName}. Enter your name exactly as you want it to appear on your official certificate.
+                {config.congratsDescription || `You've completed the ${config.courseName}. Enter your name exactly as you want it to appear on your official certificate.`}
               </p>
 
               <form onSubmit={handleGenerate} style={{ display: 'flex', flexDirection: 'column', gap: '20px', textAlign: 'left' }}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search } from 'lucide-react';
+import { Search, ChevronDown } from 'lucide-react';
 
 const HighlightText = ({ text, highlight }) => {
   if (!highlight || !highlight.trim()) return <>{text}</>;
@@ -23,8 +23,116 @@ const HighlightText = ({ text, highlight }) => {
   );
 };
 
+
+const SERVICES = [
+  "Therapist", "Listener", "Physiotherapist", "Endocrinologist", "Yoga",
+  "Diet", "Women Wellness", "Psychiatrist", "General Physician", "Fitness",
+  "Hypertension", "EyeMantra", "Clinical Assessment", "Seminar / Workshop / Training",
+  "Addiction Treatment", "Coach", "Gynecologist", "LGBTQ", "OCD",
+  "Cardiologist", "Orthopedician", "ENT Specialist", "Gastroenterologist",
+  "Paediatrician", "Sexologist", "Dermatologist", "Financial Wellbeing",
+  "Dentist", "Neurosurgeon", "Oncologist", "Ophthalmologist",
+  "Urologist (Kidney & Urinary Tract)", "Nephrologist", "Pulmonologist (Lung)",
+  "Rheumatologist", "Fertility / IVF Specialist", "General Surgery",
+  "Legal Counsellor", "Meditation / Mindfulness", "Physio Assistants",
+  "Corporate", "Mantra"
+];
+
+const ServiceFilter = ({ selectedService, onSelect }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [filterQuery, setFilterQuery] = React.useState('');
+  const dropdownRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const filteredServices = SERVICES.filter(s => s.toLowerCase().includes(filterQuery.toLowerCase()));
+
+  return (
+    <div ref={dropdownRef} style={{ position: 'relative', width: '100%', marginBottom: '12px' }}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        style={{
+          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          height: '48px', padding: '0 16px', borderRadius: '12px',
+          border: '1px solid #e5e7eb', background: '#ffffff',
+          fontSize: '0.95rem', color: 'var(--text-main)', cursor: 'pointer',
+          boxShadow: '0 1px 2px rgba(0,0,0,0.02)'
+        }}
+      >
+        <span>{selectedService}</span>
+        <ChevronDown size={18} color="#9ca3af" />
+      </button>
+
+      {isOpen && (
+        <div style={{
+          position: 'absolute', top: 'calc(100% + 4px)', left: 0, right: 0,
+          background: '#fff', borderRadius: '12px', border: '1px solid #e5e7eb',
+          boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)', zIndex: 50,
+          maxHeight: '300px', display: 'flex', flexDirection: 'column', overflow: 'hidden'
+        }}>
+          <div style={{ padding: '8px', borderBottom: '1px solid #e5e7eb' }}>
+            <div style={{ position: 'relative' }}>
+              <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#9ca3af' }} />
+              <input
+                type="text"
+                placeholder="Search services..."
+                value={filterQuery}
+                onChange={(e) => setFilterQuery(e.target.value)}
+                style={{
+                  width: '100%', height: '32px', padding: '0 12px 0 32px',
+                  borderRadius: '6px', border: '1px solid #e5e7eb',
+                  fontSize: '0.85rem', outline: 'none'
+                }}
+              />
+            </div>
+          </div>
+          <div style={{ overflowY: 'auto', flex: 1, padding: '4px' }}>
+            <button
+              onClick={() => { onSelect('All Services'); setIsOpen(false); setFilterQuery(''); }}
+              style={{
+                width: '100%', textAlign: 'left', padding: '8px 12px',
+                background: selectedService === 'All Services' ? '#f3f4f6' : 'transparent',
+                border: 'none', borderRadius: '6px', cursor: 'pointer',
+                fontSize: '0.9rem', color: 'var(--text-main)'
+              }}
+            >
+              All Services
+            </button>
+            {filteredServices.map(service => (
+              <button
+                key={service}
+                onClick={() => { onSelect(service); setIsOpen(false); setFilterQuery(''); }}
+                style={{
+                  width: '100%', textAlign: 'left', padding: '8px 12px',
+                  background: selectedService === service ? '#f3f4f6' : 'transparent',
+                  border: 'none', borderRadius: '6px', cursor: 'pointer',
+                  fontSize: '0.9rem', color: 'var(--text-main)'
+                }}
+              >
+                {service}
+              </button>
+            ))}
+            {filteredServices.length === 0 && (
+              <div style={{ padding: '8px 12px', fontSize: '0.85rem', color: '#9ca3af' }}>No services found</div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function DeveloperLessonsPage({ tasks, onNavigate }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedService, setSelectedService] = useState('All Services');
   const searchInputRef = useRef(null);
 
   useEffect(() => {
@@ -43,10 +151,9 @@ export default function DeveloperLessonsPage({ tasks, onNavigate }) {
   const cleanQuery = searchQuery.trim().toLowerCase().replace(/\s+/g, ' ');
   
   const filteredTasks = tasks.filter(task => {
-    if (!cleanQuery) return true;
-    const title = (task.title || '').toLowerCase();
-    const category = (task.category || '').toLowerCase();
-    return title.includes(cleanQuery) || category.includes(cleanQuery);
+    const matchesSearch = !cleanQuery || (task.title || '').toLowerCase().includes(cleanQuery) || (task.category || '').toLowerCase().includes(cleanQuery);
+    const matchesService = selectedService === 'All Services' || task.service === selectedService;
+    return matchesSearch && matchesService;
   });
 
   return (
@@ -69,6 +176,7 @@ export default function DeveloperLessonsPage({ tasks, onNavigate }) {
           This page is hidden from providers and is used only to test lesson layouts during development.
         </p>
         
+        <ServiceFilter selectedService={selectedService} onSelect={setSelectedService} />
         {/* Search Bar */}
         <div style={{ position: 'relative', marginTop: '4px' }}>
           <div style={{
