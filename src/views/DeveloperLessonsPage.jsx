@@ -25,7 +25,7 @@ const HighlightText = ({ text, highlight }) => {
 
 
 const SERVICES = [
-  "Therapist", "Listener", "Physiotherapist", "Endocrinologist", "Yoga",
+  "Therapy", "Listener", "Physiotherapist", "Endocrinologist", "Yoga",
   "Diet", "Women Wellness", "Psychiatrist", "General Physician", "Fitness",
   "Hypertension", "EyeMantra", "Clinical Assessment", "Seminar / Workshop / Training",
   "Addiction Treatment", "Coach", "Gynecologist", "LGBTQ", "OCD",

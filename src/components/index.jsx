@@ -49,12 +49,13 @@ export const Button = ({
   );
 };
 
+import { goToDashboard } from '../mantra/navigation';
+
 /* ==========================================================================
    2. LESSON HEADER COMPONENT
    ========================================================================== */
 export const Header = ({
   title,
-  onBack,
   progress = null,
   points = null
 }) => {
@@ -63,7 +64,7 @@ export const Header = ({
       <div className="academy-header-top">
         <button
           className="academy-header-back-btn"
-          onClick={onBack}
+          onClick={goToDashboard}
           aria-label="Go back to dashboard"
         >
           <ArrowLeft size={20} />
