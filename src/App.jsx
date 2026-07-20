@@ -40,6 +40,7 @@ import YogaNudgingLessonPage from './views/YogaNudgingLessonPage';
 import YogaReferServicesLessonPage from './views/YogaReferServicesLessonPage';
 import YogaMarketProfileLessonPage from './views/YogaMarketProfileLessonPage';
 import YogaCertificatePage from './views/YogaCertificatePage';
+import ProfileVerificationLessonPage from './views/ProfileVerificationLessonPage';
 import {
   BookOpen,
   Award,
@@ -119,9 +120,11 @@ function App() {
     }
 
     if (currentPath === '/task/profile-verification') {
-      // Redirect directly to the external provider verification portal
-      window.location.href = 'https://provider.mantracare.com/verification';
-      return null;
+      return (
+        <ProfileVerificationLessonPage
+          onBack={() => navigate('/dev')}
+        />
+      );
     }
 
     if (currentPath === '/task/premium-provider') {
