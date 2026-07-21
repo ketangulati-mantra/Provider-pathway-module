@@ -39,8 +39,7 @@ const FEATURES = [
 export default function TherapyNotesLessonPage({ onBack }) {
 
 
-  const { 
-    lessonProgress, 
+  const { actionDone, lessonProgress, 
     showCelebrate, 
     handleCloseCelebration, 
     handleActionComplete 
@@ -51,12 +50,12 @@ export default function TherapyNotesLessonPage({ onBack }) {
   });
 
   useEffect(() => {
-    const pct = completedSteps.lessonRead ? 100 : 0;
+    const pct = actionDone ? 100 : 0;
     if (pct === 100) {
       const t = setTimeout(() => setShowCelebrate(true), 800);
       return () => clearTimeout(t);
     }
-  }, [completedSteps]);
+  }, [actionDone, setShowCelebrate]);
 
   return (
     <div
@@ -252,7 +251,7 @@ export default function TherapyNotesLessonPage({ onBack }) {
             className="academy-btn-full"
             variant="primary"
             onClick={handleActionComplete}
-            disabled={completedSteps.lessonRead}
+            disabled={actionDone}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -265,7 +264,7 @@ export default function TherapyNotesLessonPage({ onBack }) {
             }}
           >
             <CheckCircle2 size={13} />
-            <span>{completedSteps.lessonRead ? 'Complete' : 'Mark Lesson as Complete'}</span>
+            <span>{actionDone ? 'Complete' : 'Mark Lesson as Complete'}</span>
           </Button>
         </div>
 
