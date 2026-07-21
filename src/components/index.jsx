@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { createPortal } from 'react-dom';
 import { useToast } from './Toast';
 import {
@@ -59,6 +60,8 @@ export const Header = ({
   progress = null,
   points = null
 }) => {
+  const { t } = useTranslation('shared');
+
   return (
     <header className="academy-header">
       <div className="academy-header-top">
@@ -82,7 +85,7 @@ export const Header = ({
         {points !== null && (
           <span className="overview-meta-badge points" style={{ marginLeft: 'auto', padding: '4px 10px' }}>
             <Award size={14} style={{ color: 'var(--color-accent-orange)' }} />
-            <span>+{points} Pts</span>
+            {t('header.points_earned', { points })}
           </span>
         )}
       </div>
@@ -98,6 +101,8 @@ export const Header = ({
    3. PROGRESS INDICATOR
    ========================================================================== */
 export const Progress = ({ value = 0 }) => {
+  const { t } = useTranslation('shared');
+
   const roundedValue = Math.min(Math.max(Math.round(value), 0), 100);
 
   return (
@@ -109,8 +114,8 @@ export const Progress = ({ value = 0 }) => {
         />
       </div>
       <div className="academy-progress-meta">
-        <span>Lesson Progress</span>
-        <span>{roundedValue}% Completed</span>
+        {t('progress.lesson_progress')}
+        {t('progress.completed', { percent: roundedValue })}
       </div>
     </div>
   );
@@ -126,6 +131,8 @@ export const OverviewCard = ({
   points,
   className = ""
 }) => {
+  const { t } = useTranslation('shared');
+
   return (
     <div className={`academy-card academy-overview-card ${className}`}>
       <h3 className="overview-title">{title}</h3>
@@ -141,7 +148,7 @@ export const OverviewCard = ({
         {points && (
           <div className="overview-meta-badge points">
             <Award size={14} />
-            <span>{points} Points</span>
+            {t('overview.points', { points })}
           </div>
         )}
       </div>
@@ -161,6 +168,8 @@ export const VideoSection = ({
   onCompleted,
   isCompleted
 }) => {
+  const { t } = useTranslation('shared');
+
   const [isPlaying, setIsPlaying] = useState(false);
   const iframeRef = useRef(null);
 
@@ -201,7 +210,7 @@ export const VideoSection = ({
 
           <div className="academy-video-overlay-info">
             <h4>{title}</h4>
-            <p>Video Lesson • {duration}</p>
+            <p>{t('video.lesson_duration', { duration })}</p>
           </div>
         </>
       ) : (
@@ -240,15 +249,15 @@ export const VideoSection = ({
               padding: '20px'
             }}>
               <Loader2 className="spinner" size={40} style={{ color: 'var(--color-primary-light)', marginBottom: '16px' }} />
-              <h4 style={{ fontSize: '1.2rem', fontWeight: 600 }}>Streaming Video...</h4>
-              <p style={{ fontSize: '0.85rem', opacity: 0.7, marginTop: '8px' }}>Simulation is playing. Click reset to watch again.</p>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: 600 }}>{t('video.streaming')}</h4>
+              <p style={{ fontSize: '0.85rem', opacity: 0.7, marginTop: '8px' }}>{t('video.simulation')}</p>
               <Button
                 variant="secondary"
                 size="sm"
                 onClick={() => setIsPlaying(false)}
                 style={{ marginTop: '16px', padding: '6px 12px', fontSize: '0.8rem' }}
               >
-                Reset Video
+                {t('video.reset')}
               </Button>
             </div>
           )}
@@ -403,6 +412,8 @@ export const ScenarioCard = ({
   options = [],
   onSelectOption
 }) => {
+  const { t } = useTranslation('shared');
+
   const [selectedId, setSelectedId] = useState(null);
 
   const handleSelect = (option) => {
@@ -414,7 +425,7 @@ export const ScenarioCard = ({
 
   return (
     <div className="academy-card academy-scenario-card text-left">
-      <span className="scenario-badge">Client Scenario</span>
+      <span className="scenario-badge">{t('scenario.badge')}</span>
       <p className="scenario-prompt">{scenario}</p>
 
       <div className="scenario-options">
@@ -435,7 +446,7 @@ export const ScenarioCard = ({
 
       {selectedId !== null && options.find(o => o.id === selectedId)?.feedback && (
         <div className="scenario-feedback">
-          <strong>Outcome: </strong>
+          <strong>{t('scenario.outcome')}</strong>
           {options.find(o => o.id === selectedId).feedback}
         </div>
       )}
@@ -456,6 +467,8 @@ export const QuizCard = ({
   hasVideo = false,
   videoWatched = false
 }) => {
+  const { t } = useTranslation('shared');
+
   const { showToast } = useToast();
   const isMulti = questions && questions.length > 0;
   const [selectedIdx, setSelectedIdx] = useState(null);
@@ -488,7 +501,7 @@ export const QuizCard = ({
 
   const handleSubmitDone = () => {
     if (hasVideo && !videoWatched) {
-      showToast('Please watch the lesson video to complete this lesson.', 'warning', 3000);
+      showToast(t('quiz.warning_watch_video'), 'warning', 3000);
       setIsSubmitted(false);
       return;
     }
@@ -518,7 +531,7 @@ export const QuizCard = ({
     return (
       <div className="academy-card academy-quiz-card text-left animate-fade-in" style={{ borderTop: '4px solid var(--color-primary)' }}>
         <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-primary)', marginBottom: '24px' }}>
-          MCQ
+          {t('quiz.mcq_title')}
         </h2>
 
         {!isSubmitted ? (
@@ -569,18 +582,16 @@ export const QuizCard = ({
               onClick={handleSubmit}
               disabled={Object.keys(selectedIndices).length < questions.length}
               style={{ alignSelf: 'flex-start', marginTop: '10px', padding: '12px 32px' }}
-            >
-              Submit
-            </Button>
+            >{t('quiz.submit')}</Button>
           </div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }} className="animate-scale-in">
             <div>
               <p style={{ fontSize: '1rem', color: 'var(--text-main)', fontWeight: 500, marginBottom: '12px' }}>
-                Thank you for your response!
+                {t('quiz.thank_you')}
               </p>
               <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--text-main)' }}>
-                Your Score is : {getScore()}/{questions.length}.
+                {t('quiz.score', { score: getScore(), total: questions.length })}
               </h3>
             </div>
 
@@ -596,10 +607,10 @@ export const QuizCard = ({
                       Q. {q.question}
                     </h4>
                     <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                      <strong>Correct Answer : </strong>{correctOption?.text}
+                      <strong>{t('quiz.correct_answer')}</strong>{correctOption?.text}
                     </p>
                     <p style={{ fontSize: '0.9rem', color: selectedOption?.isCorrect ? 'var(--color-success)' : 'var(--color-error)' }}>
-                      <strong>Your Answer : </strong>{selectedOption?.text || "Not answered"}
+                      <strong>{t('quiz.your_answer')}</strong>{selectedOption?.text || t('quiz.not_answered')}
                     </p>
                   </div>
                 );
@@ -612,9 +623,7 @@ export const QuizCard = ({
                   variant="primary"
                   onClick={handleSubmitDone}
                   style={{ padding: '12px 32px' }}
-                >
-                  Done
-                </Button>
+                >{t('quiz.done')}</Button>
               ) : null}
 
               {getScore() !== questions.length && (
@@ -630,9 +639,7 @@ export const QuizCard = ({
                     fontWeight: 500,
                     cursor: 'pointer'
                   }}
-                >
-                  Try Again
-                </Button>
+                >{t('quiz.try_again')}</Button>
               )}
             </div>
           </div>
@@ -646,7 +653,7 @@ export const QuizCard = ({
 
   return (
     <div className="academy-card academy-quiz-card text-left animate-fade-in">
-      <span className="quiz-question-number">Practice Question</span>
+      <span className="quiz-question-number">{t('quiz.practice_question')}</span>
       <h3 className="quiz-question-text">{question}</h3>
 
       <div className="quiz-options">
@@ -682,9 +689,7 @@ export const QuizCard = ({
           onClick={handleSubmit}
           disabled={selectedIdx === null}
           style={{ alignSelf: 'flex-start', marginTop: '10px' }}
-        >
-          Submit Answer
-        </Button>
+        >{t('quiz.submit_answer')}</Button>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '10px' }}>
           <div className={`quiz-feedback-box ${selectedOption?.isCorrect ? 'correct' : 'incorrect'}`}>
@@ -692,16 +697,16 @@ export const QuizCard = ({
               <>
                 <CheckCircle2 size={20} style={{ flexShrink: 0 }} />
                 <div>
-                  <strong>Correct! </strong>
-                  {selectedOption.feedback || "Well done. You've earned points for this lesson."}
+                  <strong>{t('quiz.correct')}</strong>
+                  {selectedOption.feedback || t('quiz.default_correct_feedback')}
                 </div>
               </>
             ) : (
               <>
                 <AlertCircle size={20} style={{ flexShrink: 0 }} />
                 <div>
-                  <strong>Incorrect. </strong>
-                  {selectedOption?.feedback || "Review the material and try again."}
+                  <strong>{t('quiz.incorrect')}</strong>
+                  {selectedOption?.feedback || t('quiz.default_incorrect_feedback')}
                 </div>
               </>
             )}
@@ -713,9 +718,7 @@ export const QuizCard = ({
                 variant="primary"
                 onClick={handleSubmitDone}
                 style={{ padding: '10px 24px' }}
-              >
-                Done
-              </Button>
+              >{t('quiz.done')}</Button>
             ) : null}
 
             {!selectedOption?.isCorrect && (
@@ -731,9 +734,7 @@ export const QuizCard = ({
                   fontWeight: 500,
                   cursor: 'pointer'
                 }}
-              >
-                Try Again
-              </Button>
+              >{t('quiz.try_again')}</Button>
             )}
           </div>
         </div>
@@ -747,10 +748,12 @@ export const QuizCard = ({
    ========================================================================== */
 export const CompletionScreen = ({
   points = 50,
-  title = "Congratulations!",
-  subtitle = "You completed the lesson and boosted your provider score.",
+  title = t('completion.title'),
+  subtitle = t('completion.subtitle'),
   onClose
 }) => {
+  const { t } = useTranslation('shared');
+
   // Generate random confetti pieces positions
   const confettiCount = 30;
   const confettiArray = Array.from({ length: confettiCount });

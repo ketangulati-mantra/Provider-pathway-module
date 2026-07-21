@@ -1,0 +1,54 @@
+{
+  "header": {
+    "points_earned": "[zh-Hans] +{{points}} Pts"
+  },
+  "progress": {
+    "lesson_progress": "[zh-Hans] Lesson Progress",
+    "completed": "[zh-Hans] {{percent}}% Completed"
+  },
+  "overview": {
+    "default_title": "[zh-Hans] About this Lesson",
+    "points": "[zh-Hans] {{points}} Points"
+  },
+  "video": {
+    "lesson_duration": "[zh-Hans] Video Lesson • {{duration}}",
+    "streaming": "[zh-Hans] Streaming Video...",
+    "simulation": "[zh-Hans] Simulation is playing. Click reset to watch again.",
+    "reset": "[zh-Hans] Reset Video"
+  },
+  "scenario": {
+    "badge": "[zh-Hans] Client Scenario",
+    "outcome": "[zh-Hans] Outcome: "
+  },
+  "quiz": {
+    "mcq_title": "[zh-Hans] MCQ",
+    "submit": "[zh-Hans] Submit",
+    "thank_you": "[zh-Hans] Thank you for your response!",
+    "score": "[zh-Hans] Your Score is : {{score}}/{{total}}.",
+    "correct_answer": "[zh-Hans] Correct Answer : ",
+    "your_answer": "[zh-Hans] Your Answer : ",
+    "not_answered": "[zh-Hans] Not answered",
+    "done": "[zh-Hans] Done",
+    "try_again": "[zh-Hans] Try Again",
+    "practice_question": "[zh-Hans] Practice Question",
+    "submit_answer": "[zh-Hans] Submit Answer",
+    "correct": "[zh-Hans] Correct! ",
+    "incorrect": "[zh-Hans] Incorrect. ",
+    "default_correct_feedback": "[zh-Hans] Well done. You've earned points for this lesson.",
+    "default_incorrect_feedback": "[zh-Hans] Review the material and try again.",
+    "warning_watch_video": "[zh-Hans] Please watch the lesson video to complete this lesson."
+  },
+  "completion": {
+    "title": "[zh-Hans] Congratulations!",
+    "subtitle": "[zh-Hans] You completed the lesson and boosted your provider score.",
+    "earned": "[zh-Hans] You Earned:",
+    "points": "[zh-Hans] {{points}} Provider Points",
+    "continue": "[zh-Hans] Continue to Dashboard"
+  },
+  "error": {
+    "title": "[zh-Hans] Something went wrong",
+    "message": "[zh-Hans] We apologize for the inconvenience. A technical error occurred while trying to load this lesson.",
+    "details": "[zh-Hans] View Error Details",
+    "return": "[zh-Hans] Return to Dashboard"
+  }
+}

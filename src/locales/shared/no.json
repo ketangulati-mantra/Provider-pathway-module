@@ -1,0 +1,54 @@
+{
+  "header": {
+    "points_earned": "[no] +{{points}} Pts"
+  },
+  "progress": {
+    "lesson_progress": "[no] Lesson Progress",
+    "completed": "[no] {{percent}}% Completed"
+  },
+  "overview": {
+    "default_title": "[no] About this Lesson",
+    "points": "[no] {{points}} Points"
+  },
+  "video": {
+    "lesson_duration": "[no] Video Lesson • {{duration}}",
+    "streaming": "[no] Streaming Video...",
+    "simulation": "[no] Simulation is playing. Click reset to watch again.",
+    "reset": "[no] Reset Video"
+  },
+  "scenario": {
+    "badge": "[no] Client Scenario",
+    "outcome": "[no] Outcome: "
+  },
+  "quiz": {
+    "mcq_title": "[no] MCQ",
+    "submit": "[no] Submit",
+    "thank_you": "[no] Thank you for your response!",
+    "score": "[no] Your Score is : {{score}}/{{total}}.",
+    "correct_answer": "[no] Correct Answer : ",
+    "your_answer": "[no] Your Answer : ",
+    "not_answered": "[no] Not answered",
+    "done": "[no] Done",
+    "try_again": "[no] Try Again",
+    "practice_question": "[no] Practice Question",
+    "submit_answer": "[no] Submit Answer",
+    "correct": "[no] Correct! ",
+    "incorrect": "[no] Incorrect. ",
+    "default_correct_feedback": "[no] Well done. You've earned points for this lesson.",
+    "default_incorrect_feedback": "[no] Review the material and try again.",
+    "warning_watch_video": "[no] Please watch the lesson video to complete this lesson."
+  },
+  "completion": {
+    "title": "[no] Congratulations!",
+    "subtitle": "[no] You completed the lesson and boosted your provider score.",
+    "earned": "[no] You Earned:",
+    "points": "[no] {{points}} Provider Points",
+    "continue": "[no] Continue to Dashboard"
+  },
+  "error": {
+    "title": "[no] Something went wrong",
+    "message": "[no] We apologize for the inconvenience. A technical error occurred while trying to load this lesson.",
+    "details": "[no] View Error Details",
+    "return": "[no] Return to Dashboard"
+  }
+}
