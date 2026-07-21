@@ -119,13 +119,7 @@ export default function PremiumProviderLessonPage({ onBack }) {
     hasAction: true
   });
 
-  useEffect(() => {
-    const pct = actionDone ? 100 : 0;
-    if (pct === 100) {
-      const t = setTimeout(() => setShowCelebrate(true), 800);
-      return () => clearTimeout(t);
-    }
-  }, [actionDone, setShowCelebrate]);
+  
 
   return (
     <div
