@@ -104,7 +104,7 @@ export default function SalesPartnerLessonPage({ onBack }) {
           <VideoSection 
             title={LESSON_TITLE}
             duration="3 min"
-            posterUrl="/using-mantra-thumbnail.png"
+            posterUrl="https://res.cloudinary.com/hxbamdqf/image/upload/v1784698598/Become-mantra-sales-partner_thumbnail_exfkdy.avif"
             videoUrl="https://vimeo.com/1132020422?fl=pl&fe=cm"
           />
         </section>

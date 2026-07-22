@@ -74,7 +74,7 @@ export const Header = ({
         </button>
 
         <div className="academy-header-logo">
-          <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Mantra Logo" style={{ height: '24px', display: 'block' }} />
+          <img src="https://res.cloudinary.com/hxbamdqf/image/upload/v1784698269/Mantra_logo_yptwwe.svg" alt="Mantra Logo" style={{ height: '24px', display: 'block' }} />
         </div>
 
         <div style={{ width: 40 }} /> {/* balance back button */}

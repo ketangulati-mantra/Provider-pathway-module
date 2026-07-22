@@ -71,7 +71,7 @@ const PremiumCertificate = ({ userName, innerRef, certificateId, config }) => {
         
         {/* Hierarchy 1: Logo */}
         <img 
-          src={`${import.meta.env.BASE_URL}logo.svg`} 
+          src="https://res.cloudinary.com/hxbamdqf/image/upload/v1784698269/Mantra_logo_yptwwe.svg" 
           alt="MantraCare" 
           style={{ height: '32px', marginBottom: '16px' }} 
           crossOrigin="anonymous"

@@ -19,7 +19,7 @@ const DURATION      = '4 min';
 const VIDEO = {
   title:    'Getting Paid on MantraCare',
   duration: 'Video Lesson • 4 min',
-  posterUrl: '/using-mantra-thumbnail.png',
+  posterUrl: 'https://res.cloudinary.com/hxbamdqf/image/upload/v1784699055/Using_mantra_for_your_clients_mgsnll.avif',
   videoUrl:  'https://vimeo.com/1130777919?fl=pl&fe=cm'
 };
 

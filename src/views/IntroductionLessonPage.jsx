@@ -16,7 +16,7 @@ const REWARD_POINTS = 5;
 const VIDEO = {
   title: 'Introduction to Mantra Platform',
   duration: '4 min',
-  posterUrl: '/intro-thumbnail.png',
+  posterUrl: 'https://res.cloudinary.com/hxbamdqf/image/upload/v1784698444/intro-to-mantra-thumbnail_gc7iso.jpg',
   videoUrl: 'https://vimeo.com/1149587565?fl=pl&fe=cm'
 };
 
