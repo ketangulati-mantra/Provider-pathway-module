@@ -19,7 +19,7 @@ import {
 
 const LESSON_ID = 'recruit-interns';
 const LESSON_TITLE = 'Help Recruit New Therapy Interns & Listeners';
-const REWARD_POINTS = 50;
+const REWARD_POINTS = 10;
 
 const WHO_TO_REFER = [
   { icon: UserPlus, title: 'Therapy Interns', description: 'Students or graduates interested in mental health.' },

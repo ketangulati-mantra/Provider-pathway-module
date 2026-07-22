@@ -65,8 +65,8 @@ export const activities: Activity[] = [
     activityId: '',
     service: 'Therapist',
     title: 'What is a Premium Provider?',
-    rewardPoints: 15,
-    estimatedDuration: '5 min',
+    rewardPoints: 5,
+    estimatedDuration: '2 min',
     route: '/task/premium-provider'
   },
   {
@@ -191,8 +191,8 @@ export const activities: Activity[] = [
     activityId: '',
     service: 'Therapist',
     title: 'Content Creation for Mental Health - 20 Credits',
-    rewardPoints: 20,
-    estimatedDuration: '8 min',
+    rewardPoints: 10,
+    estimatedDuration: '2 min',
     route: '/task/content-creation'
   },
   {
@@ -200,8 +200,8 @@ export const activities: Activity[] = [
     activityId: '',
     service: 'Therapist',
     title: 'Campus Mental Health Awareness',
-    rewardPoints: 50,
-    estimatedDuration: '10 min',
+    rewardPoints: 10,
+    estimatedDuration: '2 min',
     route: '/task/campus-awareness'
   },
   {
@@ -209,8 +209,8 @@ export const activities: Activity[] = [
     activityId: '',
     service: 'Therapist',
     title: 'Fund Raising for Mantra Foundation',
-    rewardPoints: 50,
-    estimatedDuration: '5 min',
+    rewardPoints: 5,
+    estimatedDuration: '2 min',
     route: '/task/fundraising'
   },
   {
@@ -218,8 +218,8 @@ export const activities: Activity[] = [
     activityId: '',
     service: 'Therapist',
     title: 'Help Recruit New Therapy Interns & Listeners',
-    rewardPoints: 50,
-    estimatedDuration: '5 min',
+    rewardPoints: 10,
+    estimatedDuration: '2 min',
     route: '/task/recruit-interns'
   },
   {
@@ -272,7 +272,7 @@ export const activities: Activity[] = [
     activityId: '',
     service: 'Therapist',
     title: 'Becoming a Mantra Sales Partner',
-    rewardPoints: 50,
+    rewardPoints: 10,
     estimatedDuration: '5 min',
     route: '/task/sales-partner'
   },

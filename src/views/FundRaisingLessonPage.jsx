@@ -14,7 +14,7 @@ import {
 
 const LESSON_ID = 'fundraising';
 const LESSON_TITLE = 'Fund Raising for Mantra Foundation';
-const REWARD_POINTS = 50;
+const REWARD_POINTS = 5;
 
 const WAYS_TO_HELP = [
   { icon: Megaphone, title: 'Spread Awareness', description: 'Share Mantra Foundation with your network.' },

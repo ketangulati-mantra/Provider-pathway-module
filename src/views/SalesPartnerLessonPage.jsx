@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 
 const LESSON_ID = 'sales-partner';
-const REWARD_POINTS = 50;
+const REWARD_POINTS = 10;
 
 export default function SalesPartnerLessonPage({ onBack }) {
   const { t } = useTranslation('sales-partner');

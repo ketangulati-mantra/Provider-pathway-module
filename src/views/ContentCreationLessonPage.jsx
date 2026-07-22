@@ -17,7 +17,7 @@ import {
 
 const LESSON_ID = 'content-creation';
 const LESSON_TITLE = 'Content Creation for Mental Health - 20 Credits';
-const REWARD_POINTS = 20;
+const REWARD_POINTS = 10;
 
 const CONTENT_IDEAS = [
   { icon: Edit3, title: 'Write an Article', description: 'Publish a blog post or Medium article about mental health, self-care, or therapy.' },

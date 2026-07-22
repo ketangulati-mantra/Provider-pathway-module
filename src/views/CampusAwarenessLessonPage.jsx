@@ -16,7 +16,7 @@ import {
 
 const LESSON_ID = 'campus-awareness';
 const LESSON_TITLE = 'Campus Mental Health Awareness';
-const REWARD_POINTS = 50;
+const REWARD_POINTS = 10;
 
 const HOW_YOU_CAN_HELP = [
   { icon: School, title: 'Identify Colleges', description: 'Reach out to your college or nearby institutions.' },
