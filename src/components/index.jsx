@@ -58,17 +58,26 @@ import { goToDashboard } from '../mantra/navigation';
 export const Header = ({
   title,
   progress = null,
-  points = null
+  points = null,
+  onBack = null
 }) => {
   const { t } = useTranslation('shared');
+
+  const handleBackClick = () => {
+    if (onBack) {
+      onBack();
+    } else {
+      goToDashboard();
+    }
+  };
 
   return (
     <header className="academy-header">
       <div className="academy-header-top">
         <button
           className="academy-header-back-btn"
-          onClick={goToDashboard}
-          aria-label="Go back to dashboard"
+          onClick={handleBackClick}
+          aria-label="Go back"
         >
           <ArrowLeft size={20} />
         </button>

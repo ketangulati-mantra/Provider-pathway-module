@@ -30,21 +30,68 @@ export const preserveQueryParams = (targetPath: string): string => {
 };
 
 /**
- * Handles back routing. Falls back to home page/dev index if no callback is supplied.
+ * Universal Exit / Back button handler for all activities across three contexts:
+ * 1. React Native WebView inside mobile app
+ * 2. iframe inside web.mantracare.com
+ * 3. Standalone browser
+ */
+export const handleExit = () => {
+  if (typeof window === 'undefined') return;
+
+  // 1. React Native WebView
+  if ((window as any).ReactNativeWebView) {
+    (window as any).ReactNativeWebView.postMessage(
+      JSON.stringify({ action: "exit" })
+    );
+    return;
+  }
+
+  // 2. iframe inside web.mantracare.com
+  if (window.parent !== window) {
+    window.parent.postMessage(
+      { action: "exit" },
+      "https://provider.mantracare.com"
+    );
+    return;
+  }
+
+  // 3. Standalone browser
+  window.location.href = "https://provider.mantracare.com";
+};
+
+/**
+ * Helper to navigate to a specific screen inside the native React Native app (e.g. after task completion).
+ */
+export const navigateNativeApp = (screen: string, params?: Record<string, any>) => {
+  if (typeof window !== 'undefined' && (window as any).ReactNativeWebView) {
+    (window as any).ReactNativeWebView.postMessage(
+      JSON.stringify({
+        action: "navigate",
+        screen,
+        params,
+      })
+    );
+    return true;
+  }
+  return false;
+};
+
+/**
+ * Handles back routing. Falls back to handleExit() if no callback is supplied.
  */
 export const goBack = (onBackCallback?: () => void) => {
   if (onBackCallback) {
     onBackCallback();
   } else {
-    window.location.replace(preserveQueryParams(MANTRA_CONFIG.dashboardUrl));
+    handleExit();
   }
 };
 
 /**
- * Redirects the browser directly to the Laravel dashboard workspace while preserving query context.
+ * Redirects the user / exits the activity back to the dashboard or host container.
  */
 export const goToDashboard = () => {
-  window.location.replace(preserveQueryParams(MANTRA_CONFIG.dashboardUrl));
+  handleExit();
 };
 
 /**
@@ -58,9 +105,8 @@ export const goToLesson = (route: string) => {
 };
 
 /**
- * Controls completion redirection actions, linking back to Laravel dashboard
- * or returning to home depending on configuration.
+ * Controls completion redirection actions, calling handleExit() or returning.
  */
 export const redirectAfterCompletion = (lessonId: string, onBackCallback?: () => void) => {
-  goToDashboard();
+  handleExit();
 };
